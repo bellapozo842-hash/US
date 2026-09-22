@@ -18,54 +18,144 @@
             margin: 0;
             min-height: 100vh;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
             font-family: Georgia, "Times New Roman", serif;
-
-            background:
-                radial-gradient(circle at 20% 20%, #ffe6ee, transparent 35%),
-                radial-gradient(circle at 80% 80%, #f7d6e2, transparent 35%),
-                #fff8fa;
 
             color: #4a2634;
 
             overflow: hidden;
         }
 
+        /* =========================
+           PORTADA CON FOTO
+           ========================= */
+
+        .portada {
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 240, 245, 0.25),
+                    rgba(255, 240, 245, 0.25)
+                ),
+                url("portada.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 100;
+
+            cursor: pointer;
+
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
+        }
+
+        .portada-contenido {
+            text-align: center;
+            color: white;
+
+            text-shadow:
+                0 2px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .portada-corazon {
+            font-size: 80px;
+
+            animation:
+                latido 1.8s infinite ease-in-out;
+        }
+
+        .portada-texto {
+            margin-top: 20px;
+
+            font-size: 20px;
+
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           CONTENIDO PRINCIPAL
+           ========================= */
+
+        .app {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 30px 15px;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    #ffe6ee,
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 80% 80%,
+                    #f7d6e2,
+                    transparent 35%
+                ),
+
+                #fff8fa;
+        }
+
         .container {
             width: min(92%, 750px);
+
             text-align: center;
+
             padding: 30px 15px;
         }
 
         .heart {
             font-size: 65px;
+
             margin-bottom: 25px;
-            animation: latido 1.8s infinite ease-in-out;
+
+            animation:
+                latido 1.8s infinite ease-in-out;
         }
 
         .timer {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
             gap: 10px;
         }
 
         .box {
-            background: rgba(255, 255, 255, 0.75);
+            background:
+                rgba(255, 255, 255, 0.75);
 
-            border: 1px solid #edc8d3;
+            border:
+                1px solid #edc8d3;
+
             border-radius: 20px;
 
             padding: 18px 8px;
 
             box-shadow:
-                0 8px 25px rgba(100, 40, 60, 0.08);
+                0 8px 25px
+                rgba(100, 40, 60, 0.08);
         }
 
         .number {
-            font-size: clamp(25px, 7vw, 45px);
+            font-size:
+                clamp(25px, 7vw, 45px);
+
             font-weight: bold;
         }
 
@@ -73,7 +163,9 @@
             margin-top: 6px;
 
             font-size: 11px;
+
             text-transform: uppercase;
+
             letter-spacing: 1px;
 
             color: #9a717e;
@@ -81,32 +173,39 @@
 
         .line {
             width: 100px;
+
             height: 1px;
 
             background: #d9a9b9;
 
-            margin: 32px auto 25px;
+            margin:
+                32px auto 25px;
         }
 
         .message {
-            font-size: clamp(18px, 5vw, 28px);
+            font-size:
+                clamp(18px, 5vw, 28px);
 
             line-height: 1.5;
+
             font-style: italic;
 
             max-width: 650px;
+
             margin: auto;
         }
 
         .floating-heart {
-            position: absolute;
+            position: fixed;
 
             color: #d98ba5;
+
             opacity: 0.45;
 
             font-size: 25px;
 
-            animation: flotar 5s infinite ease-in-out;
+            animation:
+                flotar 5s infinite ease-in-out;
         }
 
         .h1 {
@@ -117,18 +216,21 @@
         .h2 {
             top: 20%;
             right: 4%;
+
             animation-delay: 1s;
         }
 
         .h3 {
             bottom: 10%;
             left: 8%;
+
             animation-delay: 2s;
         }
 
         .h4 {
             bottom: 15%;
             right: 7%;
+
             animation-delay: 3s;
         }
 
@@ -168,21 +270,29 @@
 
             .heart {
                 font-size: 58px;
+
                 margin-bottom: 20px;
             }
 
             .timer {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
+
                 gap: 10px;
             }
 
             .box {
                 padding: 16px 5px;
+
                 border-radius: 17px;
             }
 
             .message {
                 padding: 0 8px;
+            }
+
+            .portada-texto {
+                font-size: 18px;
             }
 
         }
@@ -192,85 +302,198 @@
 
 <body>
 
-    <div class="floating-heart h1">♡</div>
-    <div class="floating-heart h2">♥</div>
-    <div class="floating-heart h3">♡</div>
-    <div class="floating-heart h4">♥</div>
+    <!-- =========================
+         PORTADA
+         ========================= -->
 
-    <div class="container">
+    <div
+        class="portada"
+        id="portada"
+        onclick="abrirApp()"
+    >
 
-        <div class="heart">
+        <div class="portada-contenido">
+
+            <div class="portada-corazon">
+                ♡
+            </div>
+
+            <div class="portada-texto">
+                Toca para abrir
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CONTADOR
+         ========================= -->
+
+    <div class="app">
+
+        <div class="floating-heart h1">
             ♡
         </div>
 
-        <div class="timer">
+        <div class="floating-heart h2">
+            ♥
+        </div>
 
-            <div class="box">
-                <div class="number" id="years">0</div>
-                <div class="label">Años</div>
+        <div class="floating-heart h3">
+            ♡
+        </div>
+
+        <div class="floating-heart h4">
+            ♥
+        </div>
+
+
+        <div class="container">
+
+            <div class="heart">
+                ♡
             </div>
 
-            <div class="box">
-                <div class="number" id="days">0</div>
-                <div class="label">Días</div>
+
+            <div class="timer">
+
+                <div class="box">
+
+                    <div
+                        class="number"
+                        id="years"
+                    >
+                        0
+                    </div>
+
+                    <div class="label">
+                        Años
+                    </div>
+
+                </div>
+
+
+                <div class="box">
+
+                    <div
+                        class="number"
+                        id="days"
+                    >
+                        0
+                    </div>
+
+                    <div class="label">
+                        Días
+                    </div>
+
+                </div>
+
+
+                <div class="box">
+
+                    <div
+                        class="number"
+                        id="hours"
+                    >
+                        0
+                    </div>
+
+                    <div class="label">
+                        Horas
+                    </div>
+
+                </div>
+
+
+                <div class="box">
+
+                    <div
+                        class="number"
+                        id="minutes"
+                    >
+                        0
+                    </div>
+
+                    <div class="label">
+                        Minutos
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="box">
-                <div class="number" id="hours">0</div>
-                <div class="label">Horas</div>
-            </div>
 
-            <div class="box">
-                <div class="number" id="minutes">0</div>
-                <div class="label">Minutos</div>
-            </div>
+            <div class="line"></div>
+
+
+            <p class="message">
+
+                “El tiempo que ha pasado desde que
+                dejé de estar sola, aunque aún no lo
+                sabía en ese instante, te amo”
+
+            </p>
 
         </div>
 
-        <div class="line"></div>
-
-        <p class="message">
-            “El tiempo que ha pasado desde que deje de estar sola, aunque aun no lo sabia en ese instante, te amo”
-        </p>
-
     </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
 
     <script>
 
         const fechaInicio =
             new Date(2025, 8, 12, 3, 0, 0);
 
+
         function actualizarTemporizador() {
 
             const ahora = new Date();
+
 
             let años =
                 ahora.getFullYear()
                 -
                 fechaInicio.getFullYear();
 
+
             let aniversario =
                 new Date(fechaInicio);
 
+
             aniversario.setFullYear(
-                fechaInicio.getFullYear() + años
+                fechaInicio.getFullYear()
+                +
+                años
             );
+
 
             if (ahora < aniversario) {
 
                 años--;
 
+
                 aniversario =
                     new Date(fechaInicio);
 
+
                 aniversario.setFullYear(
-                    fechaInicio.getFullYear() + años
+                    fechaInicio.getFullYear()
+                    +
+                    años
                 );
 
             }
 
+
             let diferencia =
                 ahora - aniversario;
+
 
             const dias =
                 Math.floor(
@@ -278,8 +501,10 @@
                     (1000 * 60 * 60 * 24)
                 );
 
+
             diferencia %=
                 (1000 * 60 * 60 * 24);
+
 
             const horas =
                 Math.floor(
@@ -287,8 +512,10 @@
                     (1000 * 60 * 60)
                 );
 
+
             diferencia %=
                 (1000 * 60 * 60);
+
 
             const minutos =
                 Math.floor(
@@ -296,25 +523,55 @@
                     (1000 * 60)
                 );
 
+
             document.getElementById("years")
                 .textContent = años;
+
 
             document.getElementById("days")
                 .textContent = dias;
 
+
             document.getElementById("hours")
                 .textContent = horas;
 
+
             document.getElementById("minutes")
                 .textContent = minutos;
+
         }
 
+
         actualizarTemporizador();
+
 
         setInterval(
             actualizarTemporizador,
             1000
         );
+
+
+        /* =========================
+           ABRIR LA APP
+           ========================= */
+
+        function abrirApp() {
+
+            const portada =
+                document.getElementById("portada");
+
+
+            portada.style.opacity = "0";
+
+
+            setTimeout(function() {
+
+                portada.style.visibility =
+                    "hidden";
+
+            }, 1200);
+
+        }
 
     </script>
 
